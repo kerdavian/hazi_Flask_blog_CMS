@@ -40,6 +40,8 @@ def create_post():
 
     title = request.form.get('title')
     file = request.files['teaser_image']
+    # filename = ""
+    # if file:
     filename = secure_filename(file.filename)
     file.save(os.path.join(python_cms.ROOT_PATH, 'files_upload', filename))
     post = PostModel(title, body, current_user.get_id(), filename)
